@@ -50,9 +50,9 @@ const { title } = Astro.props as Props;
 					</div>
 				</div>
 				<div id="menu">
-					<a href="/contacto"> Contactos</a>
-					<a href="/sobremi"> Sobre mi</a>
-					<a href="/nose"> ¿Porque esto?</a>
+					<a href="/contacto" class="links"> Contactos</a>
+					<a href="/sobremi" class="links"> Sobre mi</a>
+					<a href="/nose" class="links"> ¿Porque esto?</a>
 				</div>
 			</nav>
 		</header>
@@ -69,20 +69,28 @@ const { title } = Astro.props as Props;
 	}
 	#barnav {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
 		margin: 20px;
 	}
 	#menu {
-		color: gray;
+		color: black;
 		display: none;
 		justify-content: center;
 		gap: 10px;
 		flex-direction: column;
 		margin-top: 20px;
+		width: 100%;
+	}
+
+	.links:hover {
+		color: blueviolet;
 	}
 	@media (min-width: 768px) {
 		#menu {
 			display: flex;
+			flex-direction: row;
+			width: auto;
 		}
 		#burger {
 			display: none;
