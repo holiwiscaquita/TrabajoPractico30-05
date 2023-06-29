@@ -4,8 +4,9 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="contacto">
     <body>
-        <main>
-            <h1>Pagina para encontrar mis redes sociales:</h1>
+        <main class="flex flex-col items-center" <h1>
+            Pagina para encontrar mis redes sociales:
+
             <nav id="redes">
                 <!-- sección de una página cuyo propósito es proporcionar enlaces de navegación, ya sea dentro del documento actual o a otros documentos.-->
                 <a href="https://instagram.com"
@@ -20,27 +21,50 @@ import Layout from "../layouts/Layout.astro";
                 >
             </nav>
             <h2>Tambien me podes contactar mediante un mensaje:</h2>
-            <form>
-             <div class="fila"> 
-                <label for="#nombre">Nombre</label>
-                <input type="text" id="nombre" />
-                <input type="submit" />
-
-                <label for="#apellido">Apellido</label>
-                <input type="text" id="apellido" />
-                <input type="submit" />
-
-                <label for="#mail">Mail</label>
-                <input type="text" id="mail"/>
-                <input type="submit" />
-
-                <label for="#mensaje">Mensaje</label>
-                <input type="text" id="mensaje" />
-                <input type="submit" />
+            <form class="columna" id="contacto">
+                <div class="fila">
+                    <div class="columna">
+                        <label for="#nombre">Nombre</label>
+                        <input type="text" id="nombre" />
+                    </div>
+                    <div class="columna">
+                        <label for="#apellido">Apellido</label>
+                        <input type="text" id="apellido" />
+                    </div>
+                </div>
+                <div class="columna">
+                    <label for="#mail">Mail</label>
+                    <input type="text" id="mail" />
+                </div>
+                <div class="columna">
+                    <label for="#mensaje">Mensaje</label>
+                    <input type="text" id="mensaje" />
+                </div>
+                <button class="bg-orange-400 p-2 my-2 w-20" type="submit">
+                    Enviar</button
+                >
             </form>
         </main>
     </body>
     <style>
+        .fila {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+        }
+
+        .columna {
+            display: flex; /* permite que sea flexible el contenedor */
+            flex-direction: column; /* hace que fluya en direccion de columna */
+            gap: 8px; /* separa cada columna de la otra */
+
+            width: 100%;
+        }
+        #contacto {
+            max-width: 480px;
+            padding: 40px;
+        }
+
         body {
             background-color: gray; /*configura el color del fondo de esta pagina*/
         }
@@ -60,10 +84,33 @@ import Layout from "../layouts/Layout.astro";
             font-style: italic;
         }
         .mailmsj {
-         text-align
+            text-align: center;
         }
         .nomape {
             text-align: center;
         }
     </style>
 </Layout>
+
+<script is:inline>
+//
+const form = document.getElementById("contacto");
+
+form.addEventListener("submit", function (envent) {
+    envent.preventDefault();
+    const inputs = form.elements;
+    let nombre = inputs.nombre.value;
+    console.log(form.elements);
+    let valido = true;
+    for (let i = 0; i < form.elements.length; i = i + 1) {
+        console.log("[for]", form[i], valido);
+        if (form[i].value === "" || !valido) {
+            alert("complete todos los campos");
+            valido = false;
+        }
+    }
+    if (valido) {
+        alert("mensaje exitoso");
+    }
+});
+</script>
