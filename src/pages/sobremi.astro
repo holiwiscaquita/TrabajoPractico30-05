@@ -17,9 +17,9 @@ import Layout from "../layouts/Layout.astro";
                         Quien soy: Hola, mi nombre es Alvaro Monsalves, tengo 17
                         años y vivo en General Roca, Rio Negro, aunque naci en
                         bahia blanca, donde solo vivi unos meses.
-                    </p>
+                    </p> <!--El elemento p (párrafo) es el apropiado para distribuir el texto en párrafos-->
                 </div>
-                <div id="quehago">
+                <div id="quehago"> <!--el id le otorga un nombre al contenedor, para luego identificarlo y diferenciarlo-->
                     <img src="/cetnmro1.png" alt="no carga" width="100px" />
                     Que hago actualmente: Hoy estoy haciendo esta pagina como parte
                     del taller de Redes, en el CET N°1, escuela en la que voy a 5to
@@ -37,9 +37,10 @@ import Layout from "../layouts/Layout.astro";
                         2: Definitive Edition, Project Zomboid o Minecraft,
                         entre muchos.
                     </p>
-                    <div>
+                    <div> <!-- class da clases para determinar el style de los contenedores, en los cuales, si el class esta en el elemento, tomara sus propiedades
+                    alt= es un texto alternativo en caso de que la imagen principal no cargue -->
                         <img
-                            class="cuadrada"
+                            class="cuadrada" 
                             src="/ageofempireslogo.png"
                             alt="no carga"
                         />
@@ -68,8 +69,8 @@ import Layout from "../layouts/Layout.astro";
         text-align: left;
         font-style: normal;
         margin-bottom: 30px;
-        flex-direction: column;
-        gap: 50px;
+        flex-direction: column; /*determina la forma en que los elementos del contenedor se van a desplegar*/
+        gap: 50px; /*gap se traduce como brecha en español y, en este conjunto de propiedades, se refiere al espacio entre los elementos HTML de un contenedor*/
     }
     #quehago {
         display: flex;
