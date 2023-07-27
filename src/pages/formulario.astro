@@ -26,24 +26,29 @@ import Layout from "../layouts/Layout.astro";
                 >
             </nav>
             <h2>Tambien me podes contactar mediante un mensaje:</h2>
-            <form class="columna" id="contacto">
+            <form
+                action="https://formsubmit.co/alvam307@gmail.com"
+                method="POST"
+                class="columna"
+                id="contacto"
+            >
                 <div class="fila">
                     <div class="columna">
                         <label for="#nombre">Nombre</label>
-                        <input type="text" id="nombre" />
+                        <input type="text" name="nombre" />
                     </div>
                     <div class="columna">
                         <label for="#apellido">Apellido</label>
-                        <input type="text" id="apellido" />
+                        <input type="text" name="apellido" />
                     </div>
                 </div>
                 <div class="columna">
                     <label for="#mail">Mail</label>
-                    <input type="text" id="mail" />
+                    <input type="text" name="mail" />
                 </div>
                 <div class="columna">
                     <label for="#mensaje">Mensaje</label>
-                    <input type="text" id="mensaje" />
+                    <input type="text" name="mensaje" />
                 </div>
                 <button
                     value="Enviar"
@@ -111,37 +116,3 @@ import Layout from "../layouts/Layout.astro";
         }
     </style>
 </Layout>
-
-<script is:inline>
-//
-const form = document.getElementById("contacto");
-
-form.addEventListener("submit", function (envent) {
-    envent.preventDefault();
-    const popupFallo = document.getElementById("popupFallo");
-    const popover = document.getElementById("popover");
-    const inputs = form.elements;
-    let nombre = inputs.nombre.value;
-    console.log(form.elements);
-    let valido = true;
-    for (let i = 0; i < form.elements.length; i = i + 1) {
-        console.log("[for]", form[i], valido);
-        if (form[i].value === "") {
-            form[i].style.borderColor = "red";
-            form[i].style.borderWidth = "1px";
-            valido = false;
-        } else {
-            form[i].style.borderWidth = "0px";
-        }
-    }
-    if (!valido) popupFallo.showModal();
-    if (valido) {
-        popover.showPopover();
-    }
-});
-
-const cancelFallo = document.getElementById("cancelFallo");
-cancelFallo.addEventListener("click", function () {
-    popupFallo.close();
-});
-</script>
